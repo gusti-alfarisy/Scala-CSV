@@ -6,6 +6,12 @@ CSV Reader and Writer in Scala. This source can map the csv file into array of o
 
 Copy the ScalaCSV.scala in src folder to your project. You can see the example in Demo.scala in src folder.
 
+###CSV Delimiter
+
+```scala
+ScalaCSV.splitRegex = ";"
+```
+
 ###Reading CSV to Array[String]
 ```scala
 val arrString = ScalaCSV.read("demo.csv")
