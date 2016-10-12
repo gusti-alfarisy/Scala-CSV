@@ -9,7 +9,7 @@ Copy the ScalaCSV.scala in src folder to your project. You can see the example i
 ###CSV Delimiter
 
 ```scala
-ScalaCSV.splitRegex = ";"
+ScalaCSV.delimiter = ";"
 ```
 
 ###Reading CSV to Array[String]
