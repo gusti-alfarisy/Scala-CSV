@@ -9,7 +9,7 @@ import scala.io.Source
 
 object ScalaCSV {
 
-  var splitRegex = ","
+  var delimiter = ","
 
   def readByIndex[T : Manifest](fileName: String, indexPattern: Array[String]): Array[T]= {
     var arrData = new ArrayBuffer[T]()
@@ -93,14 +93,14 @@ object ScalaCSV {
 
   def read(fileName: String) : Array[Array[String]]= {
     val source = Source.fromFile(fileName)
-    val result = source.getLines().toArray.map(_.split(splitRegex))
+    val result = source.getLines().toArray.map(_.split(delimiter))
     source.close()
     return result
   }
 
   def readWithoutHeader(fileName: String) : Array[Array[String]]= {
     val source = Source.fromFile(fileName)
-    val result = source.getLines().drop(1).toArray.map(_.split(splitRegex))
+    val result = source.getLines().drop(1).toArray.map(_.split(delimiter))
     source.close()
     return result
   }
@@ -108,12 +108,12 @@ object ScalaCSV {
   def write[T: Manifest](fileName: String, data: Array[T]) : Unit = {
     val pw = new PrintWriter(new File(fileName))
     val fields = data(0).getClass.getDeclaredFields()
-    fields.foreach(x => pw.write(s"${x.getName}${splitRegex}"))
+    fields.foreach(x => pw.write(s"${x.getName}${delimiter}"))
     pw.write("\n")
     data.foreach(x => {
       x.getClass.getDeclaredFields.foreach(y => {
         y.setAccessible(true)
-        pw.write(y.get(x).toString + splitRegex)
+        pw.write(y.get(x).toString + delimiter)
       })
       pw.write("\n")
     })

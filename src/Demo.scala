@@ -9,7 +9,7 @@ object Demo {
 
 
   def main(args: Array[String]) : Unit = {
-    ScalaCSV.splitRegex = ";"
+    ScalaCSV.delimiter = ";"
 
     val personArr = for (i <- 1 to 10) yield new Person(s"Name $i", 20+i)
 
