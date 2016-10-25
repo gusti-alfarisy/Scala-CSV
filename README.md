@@ -39,3 +39,9 @@ First column will be the key.
 ```scala
 val arrMap = ScalaCSV.readToMap[Person]("demoMap.csv", Array("String", "Int"))
 ```
+
+###Write Array of Object to CSV
+ ```scala
+ val personArr = for (i <- 1 to 10) yield new Person(s"Name $i", 20+i)
+ ScalaCSV.write[Person]("demo.csv", personArr.toArray)
+ ```
